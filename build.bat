@@ -14,7 +14,7 @@ if not exist "build\Release" mkdir "build\Release"
 g++ -std=c++17 -O2 -static -static-libgcc -static-libstdc++ ^
     -DUNICODE -D_UNICODE -DWIN32_LEAN_AND_MEAN -DNOMINMAX ^
     -I imgui -I imgui\backends ^
-    main.cpp ^
+    main.cpp app.cpp device_log.cpp device_ui.cpp graphics.cpp ^
     imgui\imgui.cpp imgui\imgui_draw.cpp imgui\imgui_tables.cpp imgui\imgui_widgets.cpp ^
     imgui\backends\imgui_impl_win32.cpp imgui\backends\imgui_impl_dx11.cpp ^
     -ld3dcompiler -ld3d11 -ldxgi -ldwmapi -lsetupapi -luuid ^
