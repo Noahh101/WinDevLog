@@ -5,11 +5,14 @@ clear way to see when USB devices connect to or disconnect from my PC.
 
 ![screenshot](screenshots/win-device-log.png)
 
-## Run
+## Download
 
-After building with the steps below, open `build\Release\WinDeviceLog.exe`.
+Download `WinDeviceLog.exe` from the
+[latest GitHub Release](https://github.com/Noahh101/WinDevLog/releases/latest)
+and open it. No build tools are needed. New releases are built and published
+automatically from version tags.
 
-## Build
+## Build from source (optional)
 
 Install MSYS2 UCRT64 with `g++` and add its `bin` folder to `PATH`, then
 double-click `build.bat` or run it from the project folder. The executable is
