@@ -18,6 +18,8 @@ Install MSYS2 UCRT64 with `g++` and add its `bin` folder to `PATH`, then
 double-click `build.bat` or run it from the project folder. The executable is
 created at `build\Release\WinDeviceLog.exe`.
 
-ImGui and the required Win32/DX11 backends are included in `imgui/`; no internet connection is needed.
+The application entry point is `main.cpp`; its supporting source and header
+files are in `src/`. ImGui and the required Win32/DX11 backends are included in
+`imgui/`, so no internet connection is needed.
 Device names use the USB-reported product name when Windows provides one, with a
 peripheral-type fallback when it does not.
