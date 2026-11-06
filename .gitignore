@@ -1,0 +1,6 @@
+/build/
+/imgui.ini
+/.vs/
+/CMakeUserPresets.json
+*.o
+*.d
