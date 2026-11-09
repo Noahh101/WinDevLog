@@ -9,7 +9,20 @@ if errorlevel 1 (
     exit /b 1
 )
 
+where windres >nul 2>nul
+if errorlevel 1 (
+    echo windres was not found. Install MSYS2 UCRT64 and add its bin folder to PATH.
+    popd
+    exit /b 1
+)
+
 if not exist "build\Release" mkdir "build\Release"
+
+windres app.rc -O coff -o build\Release\app_resources.o
+if errorlevel 1 (
+    popd
+    exit /b 1
+)
 
 g++ -std=c++17 -O2 -static -static-libgcc -static-libstdc++ ^
     -DUNICODE -D_UNICODE -DWIN32_LEAN_AND_MEAN -DNOMINMAX ^
@@ -17,7 +30,8 @@ g++ -std=c++17 -O2 -static -static-libgcc -static-libstdc++ ^
     main.cpp src\app.cpp src\device_log.cpp src\device_ui.cpp src\graphics.cpp ^
     imgui\imgui.cpp imgui\imgui_draw.cpp imgui\imgui_tables.cpp imgui\imgui_widgets.cpp ^
     imgui\backends\imgui_impl_win32.cpp imgui\backends\imgui_impl_dx11.cpp ^
-    -ld3dcompiler -ld3d11 -ldxgi -ldwmapi -lsetupapi -luuid ^
+    build\Release\app_resources.o ^
+    -ld3dcompiler -ld3d11 -ldxgi -ldwmapi -lsetupapi -lshell32 -luuid ^
     -mwindows -municode -o build\Release\WinDeviceLog.exe
 
 if errorlevel 1 (
